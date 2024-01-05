@@ -15,4 +15,4 @@ print("Your lucky number is " + 3+4+5/6);
 - Have fun!
 
 **How does this work?**
-The HTML page takes the input from the user, splits it into parts by semicolons (;), finds what starts with ¨print¨ ( and ends with ¨)¨ and computes it, and then prints it out woth a line break. It isn´t really a programming language, but its good enough for me.
+The HTML page takes the input from the user, splits it into parts by semicolons (;), finds what starts with ¨print¨ ( and ends with ¨)¨ and computes it, and then prints it out with a line break. It isn´t really a programming language, but its good enough for me.
