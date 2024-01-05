@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Custom Coding Language IDE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+            margin: 3;
+            padding: 0;
+        }
+
+        h1, h2, p, code {
+            color: #9f63ff;
+        }
+
+        #codeInput {
+            width: 100%;
+            height: 150px;
+            background-color: #1e1e1e;
+            color: white;
+            border: 1px solid #9f63ff;
+        }
+
+        #outputPanel {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #9f63ff;
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        button {
+            background-color: #9f63ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #7b42c6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Custom Coding Language IDE</h1>
+    <h2>Type your code here:</h2>
+    <textarea id="codeInput" placeholder="Enter code here..."></textarea>
+    <br>
+    <br>
+    <button onclick="runCode()">Run your code</button>
+    <h2>Output will show here:</h2>
+    <div id="outputPanel"></div>
+    
+    <p>Rules:<br> - the only function in this very basic code is print(); <br> - You can add text within " " (Double Quotes) and use operations such as *, /, +, and, - . <br> - There is no Header Statements required <br> - For example, a full code might look like </p>
+    <code>print("Hello world");<br>print("Your lucky number is " + 3+4+5/6);</code>
+    <p> - Have fun! </p>
+
+    <script>
+        function runCode() {
+            // Get the code from the textarea
+            var code = document.getElementById('codeInput').value;
+
+            // Split the code into statements based on semicolons
+            var statements = code.split(';');
+
+            // Clear the output panel
+            document.getElementById('outputPanel').innerHTML = '';
+
+            // Process each statement
+            statements.forEach(function (statement) {
+                // Trim whitespaces
+                statement = statement.trim();
+
+                // Check if the statement starts with 'print(' and ends with ')'
+                if (statement.startsWith('print(') && statement.endsWith(')')) {
+                    // Extract the content inside the parentheses
+                    var content = statement.substring(6, statement.length - 1);
+
+                    try {
+                        // Use eval to compute the content and display the result
+                        var result = eval(content);
+
+                        // Display the result in the output panel
+                        document.getElementById('outputPanel').innerHTML += result + '<br>';
+                    } catch (error) {
+                        // Display any errors in the output panel
+                        document.getElementById('outputPanel').innerHTML += 'Error: ' + error.message + '<br>';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
